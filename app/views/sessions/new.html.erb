@@ -1,22 +1,25 @@
-<p>
-  <%= t("login.dont_have_an_account_html",
-    :url => users_path)
-  %>
-</p>
+<h2 class="form-signin-heading">Favor Autenticar</h2>  
+  
+<%= form_tag login_path, :class => "form-horizontal", :role => "form" do %>
+  <%= hidden_field_tag :return_to, params[:return_to] %>
+  
+  <div class="form-group">
+  
+    <%= label_tag :email, "Email",  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+       <%= email_field_tag :email , nil, class:  "form-control", placeholder: "Email", :autofocus=>true, :required=>true  %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :password, "Senha",  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+      <%= password_field_tag :password , nil, class: "form-control", placeholder: "Senha", :required=>true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-3">
+       <%= submit_tag "Logar", class: "btn btn-lg btn-primary btn-block" %>
+    </div>
+  </div>
 
-<%= form_tag login_path do %>
-  <p>
-    <%= hidden_field_tag :return_to, params[:return_to] %>
-    <%= label_tag :email, t("form.user.email") %>
-    <%= email_field_tag :email %>
-  </p>
-
-  <p>
-    <%= label_tag :password, t("form.user.password") %>
-    <%= password_field_tag :password %>
-  </p>
-
-  <p class="submit">
-    <%= submit_tag %>
-  </p>
 <% end %>

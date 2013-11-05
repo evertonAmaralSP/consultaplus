@@ -1,9 +1,27 @@
-<h1>Usuarios Cadastrados</h1>
-<%= link_to "Novo Usuario", {:action => 'new'} %>
-<ul>
-<%  @users.each do |user| %>
-	<li>
-  		<%= link_to user.name, controller: "users", action: "show", id: user %>
-    </li>
-<% end %>
-</ul>
+<h3>Cadastrados de Usuarios</h3>
+<%= link_to "Novo Usuario", {:action => 'new'} , class: "btn btn-lg btn-primary btn-block" %>
+
+	<table class="table table-hover table-condensed">
+		<caption><h2>Usuarios</h2></caption>
+		<thead>
+		<tr>
+			<th class="text-center">Nome</th>
+			<th class="text-center">Perfil</th>
+			<th class="text-center">Ações</th>
+		</tr>
+		</thead>
+		<tbody>
+		<%  @users.each do |user| %>
+
+		    <tr>
+		      <td class="text-left">	<%= link_to user.name, controller: "users", action: "show", id: user %> </td>
+		      <td>  <%= user.role %> </td>
+		      <td> 	
+		      	<%= link_to "Visualizar", controller: "users", action: "show", id: user %> | 
+		      	<%= link_to "Editar", controller: "users", action: "show", id: user %> | 
+      			<%= link_to "Deletar", controller: "users", action: "show", id: user %> 
+		      </td>
+		    </tr>  
+		<% end %>
+		</tbody>  
+	</table>

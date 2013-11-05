@@ -1,3 +1,5 @@
+<h2 class="form-signin-heading">Novo Usuario</h2>  
+
 <% if @user.errors.any? %>
   <p> Verifique o formulário antes de continuar: </p>
 
@@ -8,33 +10,51 @@
   </ul>
 <% end %>
 
-<%= form_for @user, :url => "/users/new" do |f| %>
-  <p>
-    <%= f.label :name, "Nome completo" %>
-    <%= f.text_field :name %>
-  </p>
+<%= form_for @user, :url => "/users/new" ,:html => { class: "form-horizontal", :role => "form"}  do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Nome completo",  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :name , class:  "form-control", placeholder: "Nome Completo" %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :email, "Email" %>
-    <%= f.email_field :email %>
-  </p>
+  <div class="form-group">
+    <%= f.label :email, "Email" ,  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+    <%= f.email_field :email,  class: "form-control", placeholder: "Email" %>
+    </div>
+  
+  </div>
 
-  <p>
-    <%= f.label :password, "Senha" %>
-    <%= f.password_field :password %>
-  </p>
+  <div class="form-group">
+    <%= f.label :password, "Senha" ,  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+    <%= f.password_field :password,  class: "form-control", placeholder: "Senha" %>
+    </div>
+  
+  </div>
 
-  <p>
-    <%= f.label :password_confirmation, "Confirme sua senha" %>
-    <%= f.password_field :password_confirmation %>
-  </p>
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Confirme sua senha" ,  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+    <%= f.password_field :password_confirmation ,  class: "form-control", placeholder: "Confirme sua senha" %>
+    </div>
+  
+  </div>
 
-  <p>
-    <%= f.label :role, "Perfil" %>
-    <%= f.select(:role, options_for_select([['Admin', 'admin'],['Medico', 'medico'], ['Secretaria', 'secretaria']])) %>
-  </p>
+  <div class="form-group">
+    <%= f.label :role, "Perfil" ,  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+    <%= f.select :role , 
+      options_for_select([['Admin', 'admin'],['Medico', 'medico'], ['Secretaria', 'secretaria']]), 
+      { :class => "form-control" }  %>
 
-  <p class="submit">
-    <%= f.submit %>
-  </p>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2">
+      <%= f.submit "Cadastrar" , :class => "btn btn-lg btn-primary btn-block" %>
+    </div>
+  </div>
+
 <% end %>
