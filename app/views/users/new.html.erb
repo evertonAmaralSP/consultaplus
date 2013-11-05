@@ -1,0 +1,40 @@
+<% if @user.errors.any? %>
+  <p> Verifique o formulário antes de continuar: </p>
+
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user, :url => "/users/new" do |f| %>
+  <p>
+    <%= f.label :name, "Nome completo" %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password, "Senha" %>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation, "Confirme sua senha" %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.label :role, "Perfil" %>
+    <%= f.select(:role, options_for_select([['Admin', 'admin'],['Medico', 'medico'], ['Secretaria', 'secretaria']])) %>
+  </p>
+
+  <p class="submit">
+    <%= f.submit %>
+  </p>
+<% end %>
