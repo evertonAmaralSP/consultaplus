@@ -1,0 +1,29 @@
+<h3>Cadastrados de Pacientes</h3>
+<%= link_to "Novo Paciente", {:action => 'new'} , class: "btn btn-lg btn-primary btn-block" %>
+
+	<table class="table table-hover table-condensed">
+		<caption><h2>Pacientes</h2></caption>
+		<thead>
+		<tr>
+			<th class="text-center">Nome</th>
+			<th class="text-center">Contato</th>
+			<th class="text-center">Data Nascimeto</th>
+			<th class="text-center">Ações</th>
+		</tr>
+		</thead>
+		<tbody>
+		<%  @pacientes.each do |paciente| %>
+
+		    <tr>
+		      <td class="text-left">	<%= paciente.name %> </td>
+		      <td class="text-left">  <%= paciente.telefone %> </td>
+		      <td class="text-left">  <%= paciente.data_nascimento %> </td>
+		      <td> 	
+		      	<%= link_to "Visualizar", controller: "pacientes", action: "show", id: paciente %> | 
+		      	<%= link_to "Editar", controller: "pacientes", action: "show", id: paciente %> | 
+      			<%= link_to "Deletar", controller: "pacientes", action: "show", id: paciente %> 
+		      </td>
+		    </tr>  
+		<% end %>
+		</tbody>  
+	</table>

@@ -1,0 +1,44 @@
+<h2 class="form-signin-heading">Novo Paciente</h2>  
+
+<% if @paciente.errors.any? %>
+  <p> Verifique o formulário antes de continuar: </p>
+
+  <ul>
+    <% @paciente.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @paciente, :url => "/pacientes/new" ,:html => { class: "form-horizontal", :role => "form"}  do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Nome completo",  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :name , class:  "form-control", placeholder: "Nome Completo" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :telefone, "Contato" ,  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+    <%= f.text_field :telefone,  class: "form-control", placeholder: "(xx) xxxx-xxxx" %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :data_nascimento, "Data Nascimento" ,  class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+    <%= f.text_field :data_nascimento,  class: "form-control", placeholder: "dd/mm/aaaa" %>
+    </div>
+  </div>
+
+  
+
+  <div class="form-group">
+    <div class="col-sm-2">
+      <%= f.submit "Cadastrar" , :class => "btn btn-lg btn-primary btn-block" %>
+    </div>
+  </div>
+
+<% end %>
